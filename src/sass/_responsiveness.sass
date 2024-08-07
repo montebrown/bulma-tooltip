@@ -1,101 +1,104 @@
+@use "bulma/sass/utilities/mixins"
+@use 'position'
+
 @each $direction in top, right, bottom, left
 	&.has-tooltip-#{$direction}-mobile
-		+mobile
-			@include tooltip-direction(#{$direction})
+		+mixins.mobile
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-tablet
-		+tablet
-			@include tooltip-direction(#{$direction})
+		+mixins.tablet 
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-tablet-only
-		+tablet-only
-			@include tooltip-direction(#{$direction})
+		+mixins.tablet-only
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-touch
-		+touch
-			@include tooltip-direction(#{$direction})
+		+mixins.touch
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-desktop
-		+desktop
-			@include tooltip-direction(#{$direction})
+		+mixins.desktop
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-desktop-only
-		+desktop-only
-			@include tooltip-direction(#{$direction})
+		+mixins.desktop-only
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-until-widescreen
-		+until-widescreen
-			@include tooltip-direction(#{$direction})
+		+mixins.until-widescreen
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-widescreen
-		+widescreen
-			@include tooltip-direction(#{$direction})
+		+mixins.widescreen
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-widescreen-only
-		+widescreen-only
-			@include tooltip-direction(#{$direction})
+		+mixins.widescreen-only
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-until-fullhd
-		+until-fullhd
-			@include tooltip-direction(#{$direction})
+		+mixins.until-fullhd
+			@include position.tooltip-direction(#{$direction})
 	&.has-tooltip-#{$direction}-fullhd
-		+fullhd
-			@include tooltip-direction(#{$direction})
+		+mixins.fullhd
+			@include position.tooltip-direction(#{$direction})
 
 // Hidden breakpoints
 &.has-tooltip-hidden-mobile
-	+mobile
+	+mixins.mobile
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-tablet
-	+tablet
+	+mixins.tablet 
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-tablet-only
-	+tablet-only
+	+mixins.tablet-only
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-touch
-	+touch
+	+mixins.touch
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-desktop
-	+desktop
+	+mixins.desktop
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-desktop-only
-	+desktop-only
+	+mixins.desktop-only
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-until-widescreen
-	+until-widescreen
+	+mixins.until-widescreen
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-widescreen
-	+widescreen
+	+mixins.widescreen
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-widescreen-only
-	+widescreen-only
+	+mixins.widescreen-only
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-until-fullhd
-	+until-fullhd
+	+mixins.until-fullhd
 		&::after,
 		&::before
 			opacity: 0 !important
 			display: none !important
 &.has-tooltip-hidden-fullhd
-	+fullhd
+	+mixins.fullhd
 		&::after,
 		&::before
 			opacity: 0 !important
@@ -106,46 +109,46 @@
 	$dir: nth($direction, 1)
 	$text: nth($direction, 2)
 	&.has-tooltip-text-#{$dir}-mobile
-		+mobile
+		+mixins.mobile
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-tablet
-		+tablet
+		+mixins.tablet 
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-tablet-only
-		+tablet-only
+		+mixins.tablet-only
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-touch
-		+touch
+		+mixins.touch
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-desktop
-		+desktop
+		+mixins.desktop
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-desktop-only
-		+desktop-only
+		+mixins.desktop-only
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-until-widescreen
-		+until-widescreen
+		+mixins.until-widescreen
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-widescreen
-		+widescreen
+		+mixins.widescreen
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-widescreen-only
-		+widescreen-only
+		+mixins.widescreen-only
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-until-fullhd
-		+until-fullhd
+		+mixins.until-fullhd
 			&::before
 				text-align: #{$text}
 	&.has-tooltip-text-#{$dir}-fullhd
-		+fullhd
+		+mixins.fullhd
 			&::before
 				text-align: #{$text}

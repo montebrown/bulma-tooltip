@@ -44,5 +44,5 @@ You can build CSS files by launching the build process with the command:
 ```shell
 npm run build
 ```
-Styles are built using `node-sass` from `src/sass` directory and minify them.
+Styles are built using `sass` from `src/sass` directory and minify them.
 Built files will be copied into `/dist` directory (can be customized within package.json).

@@ -1,6 +1,36 @@
-@import 'variables'
-@import 'position'
-@import 'animation'
+@use "bulma/sass/utilities" as utils
+@use "bulma/sass/utilities/mixins"
+
+$colors: utils.$colors !default
+$family-primary: utils.$family-primary !default
+$grey-lighter: utils.$grey-lighter !default
+$grey-dark: utils.$grey-dark !default
+$scheme-main: utils.$scheme-main !default
+$size-7: utils.$size-7 !default
+$primary: utils.$primary !default
+$radius-small: utils.$radius-small !default
+$white: utils.$white !default
+
+$tooltip-animation-duration: .3s !default
+$tooltip-animation-transition-timing-function: linear !default
+$tooltip-arrow-size: 6px !default
+$tooltip-background-color: $grey-dark !default
+$tooltip-background-opacity: 0.9 !default
+$tooltip-color: $white !default
+$tooltip-font-family: $family-primary !default
+$tooltip-font-size: $size-7 !default
+$tooltip-max-width: 15rem !default
+$tooltip-padding: .5rem 1rem !default
+$tooltip-radius: $radius-small !default
+$tooltip-z-index: 1020 !default
+
+// internal variables
+$color: null
+$color-invert: null
+
+@forward 'position'
+@use 'position'
+@use 'animation'
 
 =tooltip-arrow
 	&::after
@@ -21,7 +51,7 @@
 		border-width: $tooltip-arrow-size
 		border-color: rgba($tooltip-background-color, $tooltip-background-opacity) transparent transparent transparent
 		margin-bottom: $tooltip-arrow-size * -1 + 1
-	+tooltip-arrow-top
+	+position.tooltip-arrow-top
 
 =tooltip-box
 	&::before
@@ -43,7 +73,7 @@
 		padding: $tooltip-padding
 		text-overflow: ellipsis
 		white-space: pre-line
-	+tooltip-box-top
+	+position.tooltip-box-top
 
 =tooltip-multiline
 	&::before
@@ -67,13 +97,13 @@
 			+tooltip-arrow
 
 		&.has-tooltip-bottom
-			+tooltip-direction('bottom')
+			+position.tooltip-direction('bottom')
 
 		&.has-tooltip-left
-			+tooltip-direction('left')
+			+position.tooltip-direction('left')
 
 		&.has-tooltip-right
-			+tooltip-direction('right')
+			+position.tooltip-direction('right')
 
 		&.has-tooltip-multiline
 			+tooltip-multiline
@@ -89,8 +119,13 @@
 				text-align: right
 
 		@each $name, $pair in $colors
-			$color: nth($pair, 1)
-			$color-invert: nth($pair, 2)
+			@if type-of($pair) == "list"
+				$color: nth($pair, 1) !global
+				$color-invert: nth($pair, 2) !global
+			@else
+				$color: $pair !global
+				$color-invert: utils.bulmaFindColorInvert($pair) !global
+			
 			&.has-tooltip-#{$name}
 				&::after
 					border-color: rgba($color, $tooltip-background-opacity) transparent transparent transparent !important
@@ -107,12 +142,12 @@
 					background-color: rgba($color, $tooltip-background-opacity)
 					color: $color-invert
 
-		+tooltip-hover
+		+position.tooltip-hover
 			opacity: 1
 			visibility: visible
 
 		&.has-tooltip-fade
-			+tooltip-fade
+			+animation.tooltip-fade
 
 		@import 'responsiveness'
 	
@@ -120,8 +155,12 @@ span
 	&[data-tooltip]
 		border-bottom: 1px dashed $grey-lighter
 		@each $name, $pair in $colors
-			$color: nth($pair, 1)
-			$color-invert: nth($pair, 2)
+			@if type-of($pair) == "list"
+				$color: nth($pair, 1) !global
+				$color-invert: nth($pair, 2) !global
+			@else
+				$color: $pair !global
+				$color-invert: utils.bulmaFindColorInvert($pair) !global
 			&.has-tooltip-#{$name}
 				border-bottom-color: lighten($color, 5%)
 

@@ -1,3 +1,14 @@
+@use "bulma/sass/utilities" as utils
+
+$colors: utils.$colors !default
+$family-primary: utils.$family-primary !default
+$grey-dark: utils.$grey-dark !default
+$scheme-main: utils.$scheme-main !default
+$size-7: utils.$size-7 !default
+$primary: utils.$primary !default
+$radius-small: utils.$radius-small !default
+$white: utils.$white !default
+
 $tooltip-animation-duration: .3s !default
 $tooltip-animation-transition-timing-function: linear !default
 $tooltip-arrow-size: 6px !default
@@ -10,3 +21,7 @@ $tooltip-max-width: 15rem !default
 $tooltip-padding: .5rem 1rem !default
 $tooltip-radius: $radius-small !default
 $tooltip-z-index: 1020 !default
+
+// internal variables
+$color: null
+$color-invert: null
